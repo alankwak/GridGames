@@ -1,4 +1,3 @@
-#include <sstream>
 #include <limits>
 #include "TicTacToe.h"
 #include "ConnectFour.h"
@@ -10,7 +9,6 @@ int main() {
           "\n\t1 - TicTacToe"
           "\n\t2 - ConnectFour"<<endl;
     string gameType;
-    stringstream ss;
     while(gameType != "1" && gameType != "2") {
         cin >> gameType;
     }
