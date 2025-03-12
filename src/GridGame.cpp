@@ -1,4 +1,5 @@
 #include "../include/GridGame.h"
+#include <stdexcept>
 
 GridGame::GridGame(int r, int c) {
     resizeRows(r);
@@ -23,37 +24,38 @@ void GridGame::resizeRows(int r) {
         for(int i = prevSize; i < grid.size(); i++)
             grid[i].resize(grid[0].size());
     } else {
-        cout<<"Error sizing grid: please make sure row sizes are greater than zero"<<endl;
+        throw invalid_argument("Error sizing grid: please make sure row sizes are greater than zero");
     }
 }
 
 void GridGame::resizeCols(int c) {
     if(c > 0)
-        for(int i = 0; i < grid.size(); i++)
-            grid[i].resize(c);
+        for(auto& v : grid)
+            v.resize(c);
     else
-        cout<<"Error sizing grid: please make sure column sizes are greater than zero"<<endl;
+        throw invalid_argument("Error sizing grid: please make sure column sizes are greater than zero");
 }
 
 void GridGame::printGrid() {
-    cout<<"  ";
+    cout<<"   ";
     for(int i = 0; i < grid[0].size(); i++) {
-        cout<<i + 1<<"  ";
+        i<9 ? cout<<i + 1<<"   " : cout<<i + 1<<"  ";
     }
     cout<<endl;
     for(int i = 0; i < grid.size(); i++) {
-        cout<<i + 1<<" ";
+        cout<<i + 1;
+        i<9 ? cout<<"  " : cout<<' ';
         for(int j = 0; j < grid[i].size() - 1; j++) {
-            cout<<*grid[i][j]<<" |";
+            cout<<*grid[i][j]<<"  |";
         }
         cout<<*grid[i][grid[i].size() - 1]<<endl;
 
         if(i != grid.size() - 1) {
-            cout<<"  ";
+            cout<<"   ";
             for(int j = 0; j < grid[i].size() - 1; j++) {
-                cout<<"--|";
+                cout<<"---|";
             }
-            cout<<"--"<<endl;
+            cout<<"---"<<endl;
         }
     }
 }

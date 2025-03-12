@@ -22,6 +22,8 @@ int main() {
             cin >> i;
             if (tolower(i[0]) != 'y')
                 playing = false;
+            cin.clear();
+            cin.ignore( numeric_limits<streamsize>::max(), '\n');
         }
     }
     else if(gameType=="2"){
@@ -30,22 +32,22 @@ int main() {
         cout<<"What size board would you like to play with? (standard is 7 cols x 6 rows)"
               "\nNumber of columns: ";
         while(true) {
-            if(cin >> c && c > 0) {
+            if(cin >> c && c > 0 && c < 100) {
                 break;
             }
             else {
-                cout<<"Please make sure the number of columns is valid (integer > 0). \nNumber of columns: ";
+                cout<<"Please make sure the number of columns is valid (integer > 0 & < 100). \nNumber of columns: ";
                 cin.clear();
                 cin.ignore( numeric_limits<streamsize>::max(), '\n');
             }
         }
         cout<<"Number of rows: ";
         while(true) {
-            if(cin >> r && r > 0) {
+            if(cin >> r && r > 0 && r < 100) {
                 break;
             }
             else {
-                cout<<"Please make sure the number of rows is valid (integer > 0). \nNumber of rows: ";
+                cout<<"Please make sure the number of rows is valid (integer > 0 & < 100). \nNumber of rows: ";
                 cin.clear();
                 cin.ignore( numeric_limits<streamsize>::max(), '\n');
             }
@@ -58,6 +60,8 @@ int main() {
             cin >> i;
             if (tolower(i[0]) != 'y')
                 playing = false;
+            cin.clear();
+            cin.ignore( numeric_limits<streamsize>::max(), '\n');
         }
     }
 
