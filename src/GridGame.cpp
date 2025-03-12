@@ -1,4 +1,4 @@
-#include "GridGame.h"
+#include "../include/GridGame.h"
 
 GridGame::GridGame(int r, int c) {
     resizeRows(r);

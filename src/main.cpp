@@ -1,6 +1,6 @@
 #include <limits>
-#include "TicTacToe.h"
-#include "ConnectFour.h"
+#include "../include/TicTacToe.h"
+#include "../include/ConnectFour.h"
 
 using namespace std;
 

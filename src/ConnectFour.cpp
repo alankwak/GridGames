@@ -1,4 +1,4 @@
-#include "ConnectFour.h"
+#include "../include/ConnectFour.h"
 
 ConnectFour::ConnectFour() : GridGame(6, 7) {}
 
