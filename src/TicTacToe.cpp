@@ -1,3 +1,4 @@
+#include <limits>
 #include "../include/TicTacToe.h"
 
 TicTacToe::TicTacToe() : GridGame(3, 3){
@@ -87,19 +88,51 @@ void TicTacToe::makeMove(bool isP1Turn) {
     while(occ) {
         if(isP1Turn) {
             cout << "Player 1: Please choose your move: \nRow: ";
-            cin >> r;
+            while(true) {
+                if (cin >> r && r > 0 && r <= 3) {
+                    break;
+                } else {
+                    cout << "Please make sure the row is valid (integer > 0 & <= 3). \nRow: ";
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+            }
             cout << "Col: ";
-            cin >> c;
+            while(true) {
+                if (cin >> c && c > 0 && c <= 3) {
+                    break;
+                } else {
+                    cout << "Please make sure the column is valid (integer > 0 & <= 3). \nCol: ";
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+            }
         } else {
             cout << "Player 2: Please choose your move: \nRow: ";
-            cin >> r;
+            while(true) {
+                if (cin >> r && r > 0 && r <= 3) {
+                    break;
+                } else {
+                    cout << "Please make sure the row is valid (integer > 0 & <= 3). \nRow: ";
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+            }
             cout << "Col: ";
-            cin >> c;
+            while(true) {
+                if (cin >> c && c > 0 && c <= 3) {
+                    break;
+                } else {
+                    cout << "Please make sure the column is valid (integer > 0 & <= 3). \nCol: ";
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+            }
         }
-        if(r <= getNumRows() && r > 0 && c <= getNumCols() && c > 0 && getMarker(r, c) == ' ')
+        if(getMarker(r, c) == ' ')
             occ = false;
         else
-            cout<<"Invalid space, please make a different move"<<endl;
+            cout<<"Space is occupied, please make a different move."<<endl;
     }
 
     if(isP1Turn) {

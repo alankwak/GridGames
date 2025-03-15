@@ -1,3 +1,4 @@
+#include <limits>
 #include "../include/ConnectFour.h"
 
 ConnectFour::ConnectFour() : GridGame(6, 7) {}
@@ -89,26 +90,56 @@ void ConnectFour::makeMove(bool isP1Turn) {
     int bottomRow;
     bool occ = true;
     while(occ) {
-        bottomRow = getNumRows();
         if(isP1Turn) {
             cout << "Player 1: Please choose your move: \nCol: ";
-            cin >> c;
+            while(true) {
+                if (cin >> c && c > 0 && c <= getNumCols()) {
+                    // find open spot in column
+                    bottomRow = getNumRows();
+                    while (bottomRow > 0) {
+                        if (getMarker(bottomRow, c) == ' ') {
+                            occ = false;
+                            break;
+                        }
+                        bottomRow--;
+                    }
+                    // check if column is completely filled
+                    if (bottomRow == 0)
+                        cout << "Column is full, please choose a different move. \nCol: ";
+                    else
+                        break;
+                } else {
+                    cout << "Please make sure the number of columns is valid (integer > 0 & <= " << getNumCols()
+                         << "). \nCol: ";
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+            }
         } else {
             cout << "Player 2: Please choose your move: \nCol: ";
-            cin >> c;
-        }
-        if(c <= getNumCols() && c > 0) {
-            while (bottomRow > 0) {
-                if (getMarker(bottomRow, c) == ' ') {
-                    occ = false;
-                    break;
+            while(true) {
+                if (cin >> c && c > 0 && c <= getNumCols()) {
+                    // find open spot in column
+                    bottomRow = getNumRows();
+                    while (bottomRow > 0) {
+                        if (getMarker(bottomRow, c) == ' ') {
+                            occ = false;
+                            break;
+                        }
+                        bottomRow--;
+                    }
+                    // check if column is completely filled
+                    if (bottomRow == 0)
+                        cout << "Column is full, please choose a different move. \nCol: ";
+                    else
+                        break;
+                } else {
+                    cout << "Please make sure the number of columns is valid (integer > 0 & <= " << getNumCols() <<")"
+                         << "). \nCol: ";
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 }
-                bottomRow--;
             }
-            if(bottomRow == 0)
-                cout<<"Column is full, please choose a different move"<<endl;
-        } else {
-            cout<<"Invalid column, please choose a different move"<<endl;
         }
 
     }

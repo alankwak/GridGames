@@ -5,9 +5,9 @@ class TicTacToe : public GridGame {
 public:
     TicTacToe();
 
-    void playGame();
+    void playGame() override;
 private:
-    bool checkForWinner();
+    bool checkForWinner() override;
     bool checkRight(int r, int c);
     bool checkDown(int r, int c);
     bool checkDownRight(int r, int c);
