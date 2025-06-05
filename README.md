@@ -1,1 +1,3 @@
-An OOP approach to creating grid-based games like Tic Tac Toe and Connect 4.
+# GridGames
+
+An OOP approach to creating grid-based games such as Tic Tac Toe and Connect 4 in C++.
